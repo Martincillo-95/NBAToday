@@ -16,6 +16,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Locale;
+
 import martin.juanantonio.nbatoday.R;
 
 public class ConferenceFragment extends Fragment {
@@ -35,7 +37,7 @@ public class ConferenceFragment extends Fragment {
         tabLayout.setTabTextColors(Color.parseColor("#9c9c9c"), Color.parseColor("#FFFFFF"));
         appBarLayout.addView(tabLayout);
 
-        viewPager = root.findViewById(R.id.pager);
+        viewPager = root.findViewById(R.id.pagerConference);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -56,6 +58,7 @@ public class ConferenceFragment extends Fragment {
         }
 
         String titles[] = {"Conferencia Este", "Conferencia Oeste"};
+        String[] titlesEnglish = {"West Conference", "East Conference"};
 
         @Override
         public Fragment getItem(int position) {
@@ -75,7 +78,14 @@ public class ConferenceFragment extends Fragment {
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return titles[position];
+
+            if(Locale.getDefault().getLanguage().equals("en")){
+                return titlesEnglish[position];
+            }else if(Locale.getDefault().getLanguage().equals("es")){
+                return titles[position];
+            }
+
+            return null;
         }
     }
 }

@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="martin.juanantonio.nbatoday.ui.conferences.ConferenceFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_conference"
         tools:layout="@layout/fragment_conferences" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="martin.juanantonio.nbatoday.ui.teams.TeamFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_team"
         tools:layout="@layout/fragment_teams" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="martin.juanantonio.nbatoday.ui.favorite.FavoriteFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_favorite"
         tools:layout="@layout/fragment_favorites" />
 
 </navigation>
