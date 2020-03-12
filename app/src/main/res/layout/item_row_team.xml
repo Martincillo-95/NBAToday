@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cardViewTeam"
+    android:layout_margin="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -14,7 +15,7 @@
         <ImageView
             android:id="@+id/imageViewLogoEquipo"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="0.4"
             android:src="@drawable/ic_launcher_background"/>
 
@@ -24,14 +25,15 @@
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:gravity="center"
+            android:textSize="15dp"
             android:text="Nombre Equipo"
             android:clickable="true"/>
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="0.4"
-            android:paddingRight="10dp"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/icono_favorito_vacio"
             android:id="@+id/favoritoVacio"/>
 
