@@ -1,9 +1,7 @@
-package martin.juanantonio.nbatoday.ui.teams;
+package martin.juanantonio.nbatoday.ui.conferences;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
@@ -19,27 +17,30 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.List;
 
-public class TeamViewModel extends AndroidViewModel {
+import martin.juanantonio.nbatoday.ui.teams.QueryTeams;
+import martin.juanantonio.nbatoday.ui.teams.Team;
+
+public class ConferenceViewModel extends AndroidViewModel {
 
     String conference;
-    public MutableLiveData<List<Team>> teamList;
+    public MutableLiveData<List<Conference>> conferenceList;
     private Application application;
-    public static final String URL_DATA_EQUIPOS = "http://data.nba.net/10s/prod/v2/2018/teams.json";
+    public static final String URL_DATA_EQUIPOS = "http://data.nba.net/10s/prod/v1/current/standings_conference.json";
 
-    public TeamViewModel(Application application) {
+    public ConferenceViewModel(Application application) {
         super(application);
         this.application = application;
     }
 
-    public LiveData<List<Team>> getEquipos(String conference){
+    public LiveData<List<Conference>> getConference(String conference){
         this.conference = conference;
 
-        if(teamList == null){
-            teamList = new MutableLiveData<>();
+        if(conferenceList == null){
+            conferenceList = new MutableLiveData<>();
             loadEquipos();
         }
 
-        return teamList;
+        return conferenceList;
     }
 
     public void loadEquipos(){
@@ -51,8 +52,8 @@ public class TeamViewModel extends AndroidViewModel {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, uriBuilder.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                List<Team> listaEquipos = QueryTeams.extractFeatureFromJSON(response, conference);
-                teamList.setValue(listaEquipos);
+                List<Conference> listaEquipos = QueryConference.extractFeatureFromJSON(response, conference);
+                conferenceList.setValue(listaEquipos);
 
                 Log.d("onReponse", response);
             }
