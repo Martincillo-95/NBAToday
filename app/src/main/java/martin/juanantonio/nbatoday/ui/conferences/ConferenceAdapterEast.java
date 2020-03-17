@@ -37,8 +37,7 @@ public class ConferenceAdapterEast extends RecyclerView.Adapter<ConferenceAdapte
         final Conference conference = conferenceList.get(position);
 
         holder.posicionEquipo.setText(conference.getPosicionEquipoConferencia());
-        holder.nombreEquipo.setText(conference.getNombreEquipoConferencia());
-        holder.apellidoEquipo.setText(conference.getApellidoEquipoConferencia());
+        holder.nombreEquipo.setText(conference.getNombreEquipoConferencia()+" "+conference.getApellidoEquipoConferencia());
         holder.victoriasEquipo.setText(conference.getVictoriasEquipoConferencia());
         holder.derrotasEquipo.setText(conference.getDerrotasEquipoConferencia());
     }
@@ -52,7 +51,6 @@ public class ConferenceAdapterEast extends RecyclerView.Adapter<ConferenceAdapte
 
         TextView posicionEquipo;
         TextView nombreEquipo;
-        TextView apellidoEquipo;
         TextView victoriasEquipo;
         TextView derrotasEquipo;
 
@@ -61,7 +59,6 @@ public class ConferenceAdapterEast extends RecyclerView.Adapter<ConferenceAdapte
 
             posicionEquipo = itemView.findViewById(R.id.numeroPosicion);
             nombreEquipo = itemView.findViewById(R.id.nombreEquipoResultados);
-            apellidoEquipo = itemView.findViewById(R.id.apellidoEquipoResultados);
             victoriasEquipo = itemView.findViewById(R.id.numeroVictorias);
             derrotasEquipo = itemView.findViewById(R.id.numeroDerrotas);
         }

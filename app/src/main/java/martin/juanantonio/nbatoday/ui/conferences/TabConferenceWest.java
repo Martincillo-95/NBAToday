@@ -34,7 +34,7 @@ public class TabConferenceWest extends Fragment {
     ConferenceAdapterWest conferenceAdapterWest;
     Conference conference;
     RecyclerView recyclerView;
-    TextView textViewNombre, textViewApellido, textViewPosicion, textViewVictorias, textViewDerrotas;
+    TextView textViewNombre, textViewPosicion, textViewVictorias, textViewDerrotas;
 
     public TabConferenceWest() {
         // Required empty public constructor
@@ -54,8 +54,6 @@ public class TabConferenceWest extends Fragment {
         textViewPosicion = view.findViewById(R.id.numeroPosicion);
 
         textViewNombre = view.findViewById(R.id.nombreEquipoResultados);
-
-        textViewApellido = view.findViewById(R.id.apellidoEquipoResultados);
 
         textViewVictorias = view.findViewById(R.id.numeroVictorias);
 
