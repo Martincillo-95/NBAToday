@@ -60,6 +60,16 @@ public class TabsTeamWest extends Fragment {
 
         imageViewFavorite = view.findViewById(R.id.favoritoVacio);
 
+        /*imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(imageViewFavorite.set)
+
+                imageViewFavorite.setImageResource(R.drawable.icono_favorito_relleno);
+            }
+        });*/
+
         listaEquipos = new ArrayList<Team>();
 
         teamAdapterWest = new TeamAdapterWest(listaEquipos, getActivity());

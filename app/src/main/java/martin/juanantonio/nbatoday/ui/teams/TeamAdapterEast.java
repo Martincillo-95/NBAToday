@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +20,12 @@ public class TeamAdapterEast extends RecyclerView.Adapter<TeamAdapterEast.ViewHo
 
     private List<Team> teamList;
     private Context context;
+    //private OnItemClickListener listener;
 
-    public TeamAdapterEast(List<Team> teamList, Context context) {
+    public TeamAdapterEast(List<Team> teamList, Context context /*,OnItemClickListener listener*/) {
         this.teamList = teamList;
         this.context = context;
+        //this.listener = listener;
     }
 
     @NonNull
@@ -36,17 +39,27 @@ public class TeamAdapterEast extends RecyclerView.Adapter<TeamAdapterEast.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Team team = teamList.get(position);
 
+        holder.logoEquipo.setImageResource(team.getLogoEquipo());
         holder.nombreEquipo.setText(team.getNombreEquipo());
-
+        /*holder.logoFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(team, position);
+            }
+        });*/
     }
 
     @Override
     public int getItemCount() {
         return teamList.size();
     }
+
+    /*public interface OnItemClickListener {
+        void onItemClick(Team team, int position);
+    }*/
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

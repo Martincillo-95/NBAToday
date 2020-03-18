@@ -30,7 +30,7 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabsTeamEast extends Fragment {
+public class TabsTeamEast extends Fragment{
 
     List<Team> listaEquipos;
     TeamAdapterEast teamAdapterEast;
@@ -66,6 +66,13 @@ public class TabsTeamEast extends Fragment {
 
         recyclerView.setAdapter(teamAdapterEast);
 
+        /*imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageViewFavorite.setImageResource(R.drawable.icono_favorito_relleno);
+            }
+        });*/
+
         return view;
     }
 
@@ -95,4 +102,5 @@ public class TabsTeamEast extends Fragment {
             Log.d("Hola", "error on resume de tab east");
         }
     }
+
 }

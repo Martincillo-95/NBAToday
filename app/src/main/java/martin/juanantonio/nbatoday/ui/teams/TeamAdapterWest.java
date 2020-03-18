@@ -39,6 +39,7 @@ public class TeamAdapterWest extends RecyclerView.Adapter<TeamAdapterWest.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Team team = teamList.get(position);
 
+        holder.logoEquipo.setImageResource(team.getLogoEquipo());
         holder.nombreEquipo.setText(team.getNombreEquipo());
 
     }

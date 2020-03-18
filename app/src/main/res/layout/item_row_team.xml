@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/imageViewLogoEquipo"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_weight="0.4"
             android:src="@drawable/ic_launcher_background"/>
 

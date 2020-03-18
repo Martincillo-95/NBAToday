@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Team{
 
+    private int logoEquipo;
     private String nombreEquipo;
     private String conferenciaEquipo;
     private String idEquipo;
@@ -11,10 +12,19 @@ public class Team{
     public Team() {
     }
 
-    public Team(String nombreEquipo, String conferenciaEquipo, String idEquipo) {
+    public Team(String nombreEquipo, String conferenciaEquipo, String idEquipo, int logoEquipo) {
         this.nombreEquipo = nombreEquipo;
         this.conferenciaEquipo = conferenciaEquipo;
         this.idEquipo = idEquipo;
+        this.logoEquipo = logoEquipo;
+    }
+
+    public int getLogoEquipo() {
+        return logoEquipo;
+    }
+
+    public void setLogoEquipo(int logoEquipo) {
+        this.logoEquipo = logoEquipo;
     }
 
     public String getNombreEquipo() {
