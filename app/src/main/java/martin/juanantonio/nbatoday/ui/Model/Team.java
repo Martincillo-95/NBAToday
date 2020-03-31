@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.teams;
+package martin.juanantonio.nbatoday.ui.Model;
 
 import java.io.Serializable;
 

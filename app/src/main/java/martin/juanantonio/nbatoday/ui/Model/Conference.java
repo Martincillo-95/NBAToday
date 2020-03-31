@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.Model;
 
 public class Conference {
 

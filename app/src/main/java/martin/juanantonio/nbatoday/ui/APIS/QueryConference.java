@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.APIS;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import martin.juanantonio.nbatoday.ui.Model.Conference;
 
 public final class QueryConference {
 

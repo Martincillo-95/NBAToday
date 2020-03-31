@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NBAToday</string>
+    <string name="menu_conference" translatable="false">Standing Conferences</string>
+    <string name="menu_favorite" translatable="false">Favorites</string>
+    <string name="menu_team" translatable="false">Teams</string>
+</resources>

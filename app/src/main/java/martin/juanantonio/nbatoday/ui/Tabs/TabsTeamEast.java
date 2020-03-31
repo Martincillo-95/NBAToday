@@ -1,7 +1,6 @@
-package martin.juanantonio.nbatoday.ui.teams;
+package martin.juanantonio.nbatoday.ui.Tabs;
 
 
-import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -24,22 +23,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Adapter.TeamAdapter;
+import martin.juanantonio.nbatoday.ui.Model.Team;
+import martin.juanantonio.nbatoday.ui.ViewModel.AppViewModel;
+
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabsTeamWest extends Fragment {
+public class TabsTeamEast extends Fragment{
 
     List<Team> listaEquipos;
-    TeamAdapterWest teamAdapterWest;
+    TeamAdapter teamAdapter;
     Team team;
     RecyclerView recyclerView;
     ImageView imageViewLogo, imageViewFavorite;
     TextView textViewNombre;
 
-    public TabsTeamWest() {
+    public TabsTeamEast() {
         // Required empty public constructor
     }
 
@@ -48,9 +51,9 @@ public class TabsTeamWest extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_tabs_team_west, container, false);
+        View view = inflater.inflate(R.layout.fragment_tabs_team_east, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewTeamWest);
+        recyclerView = view.findViewById(R.id.recyclerViewTeamEast);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
@@ -60,21 +63,18 @@ public class TabsTeamWest extends Fragment {
 
         imageViewFavorite = view.findViewById(R.id.favoritoVacio);
 
+        listaEquipos = new ArrayList<Team>();
+
+        teamAdapter = new TeamAdapter(listaEquipos, getActivity());
+
+        recyclerView.setAdapter(teamAdapter);
+
         /*imageViewFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(imageViewFavorite.set)
-
                 imageViewFavorite.setImageResource(R.drawable.icono_favorito_relleno);
             }
         });*/
-
-        listaEquipos = new ArrayList<Team>();
-
-        teamAdapterWest = new TeamAdapterWest(listaEquipos, getActivity());
-
-        recyclerView.setAdapter(teamAdapterWest);
 
         return view;
     }
@@ -88,21 +88,21 @@ public class TabsTeamWest extends Fragment {
         boolean isConnected = info != null && info.isConnected();
 
         if(isConnected){
-            TeamViewModel model = ViewModelProviders.of(this).get(TeamViewModel.class);
-            model.getEquipos("West").observe(this, new Observer<List<Team>>() {
+            AppViewModel model = ViewModelProviders.of(this).get(AppViewModel.class);
+            model.getEquipos("East").observe(this, new Observer<List<Team>>() {
                 @Override
                 public void onChanged(@Nullable List<Team> teams) {
-                    teamAdapterWest.notifyDataSetChanged();
+                    teamAdapter.notifyDataSetChanged();
                     listaEquipos.clear();
-                    if(teamAdapterWest != null){
+                    if(teamAdapter != null){
                         listaEquipos.addAll(teams);
                     }else{
-                        Log.d("Hola", "error on changed de tab west");
+                        Log.d("Hola", "error on changed de tab east");
                     }
                 }
             });
         }else{
-            Log.d("Hola", "error on resume de tab west");
+            Log.d("Hola", "error on resume de tab east");
         }
     }
 

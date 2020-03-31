@@ -2,11 +2,7 @@ package martin.juanantonio.nbatoday;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
@@ -25,9 +21,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-import martin.juanantonio.nbatoday.ui.conferences.ConferenceFragment;
-import martin.juanantonio.nbatoday.ui.favorite.FavoriteFragment;
-import martin.juanantonio.nbatoday.ui.teams.TeamFragment;
+import martin.juanantonio.nbatoday.ui.Fragment.ConferenceFragment;
+import martin.juanantonio.nbatoday.ui.Fragment.FavoriteFragment;
+import martin.juanantonio.nbatoday.ui.Fragment.TeamFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

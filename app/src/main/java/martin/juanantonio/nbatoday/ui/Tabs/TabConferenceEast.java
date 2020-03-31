@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.Tabs;
 
 
 import android.net.ConnectivityManager;
@@ -22,21 +22,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Adapter.ConferenceAdapter;
+import martin.juanantonio.nbatoday.ui.Model.Conference;
+import martin.juanantonio.nbatoday.ui.ViewModel.AppViewModel;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabConferenceWest extends Fragment {
+public class TabConferenceEast extends Fragment {
 
     List<Conference> listaConference;
-    ConferenceAdapterWest conferenceAdapterWest;
+    ConferenceAdapter conferenceAdapter;
     Conference conference;
     RecyclerView recyclerView;
     TextView textViewNombre, textViewPosicion, textViewVictorias, textViewDerrotas;
 
-    public TabConferenceWest() {
+    public TabConferenceEast() {
         // Required empty public constructor
     }
 
@@ -45,9 +49,9 @@ public class TabConferenceWest extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tab_conference_west, container, false);
+        View view = inflater.inflate(R.layout.fragment_tab_conference_east, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewConferenceWest);
+        recyclerView = view.findViewById(R.id.recyclerViewConferenceEast);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
@@ -61,9 +65,9 @@ public class TabConferenceWest extends Fragment {
 
         listaConference = new ArrayList<>();
 
-        conferenceAdapterWest = new ConferenceAdapterWest(listaConference, getActivity());
+        conferenceAdapter = new ConferenceAdapter(listaConference, getActivity());
 
-        recyclerView.setAdapter(conferenceAdapterWest);
+        recyclerView.setAdapter(conferenceAdapter);
 
         return view;
     }
@@ -77,13 +81,13 @@ public class TabConferenceWest extends Fragment {
         boolean isConnected = info != null && info.isConnected();
 
         if(isConnected){
-            ConferenceViewModel model = ViewModelProviders.of(this).get(ConferenceViewModel.class);
-            model.getConference("West").observe(this, new Observer<List<Conference>>() {
+            AppViewModel model = ViewModelProviders.of(this).get(AppViewModel.class);
+            model.getConference("East").observe(this, new Observer<List<Conference>>() {
                 @Override
                 public void onChanged(@Nullable List<Conference> teams) {
-                    conferenceAdapterWest.notifyDataSetChanged();
+                    conferenceAdapter.notifyDataSetChanged();
                     listaConference.clear();
-                    if(conferenceAdapterWest != null){
+                    if(conferenceAdapter != null){
                         listaConference.addAll(teams);
                     }else{
                         Log.d("Hola", "error on changed de tab west");

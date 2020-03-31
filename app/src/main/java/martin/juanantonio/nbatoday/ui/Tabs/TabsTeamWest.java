@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.Tabs;
 
 
 import android.net.ConnectivityManager;
@@ -16,55 +16,66 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
-
+import martin.juanantonio.nbatoday.ui.Adapter.TeamAdapter;
+import martin.juanantonio.nbatoday.ui.Model.Team;
+import martin.juanantonio.nbatoday.ui.ViewModel.AppViewModel;
 import static android.content.Context.CONNECTIVITY_SERVICE;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabConferenceEast extends Fragment {
+public class TabsTeamWest extends Fragment {
 
-    List<Conference> listaConference;
-    ConferenceAdapterEast conferenceAdapterEast;
-    Conference conference;
+    List<Team> listaEquipos;
+    TeamAdapter teamAdapter;
+    Team team;
     RecyclerView recyclerView;
-    TextView textViewNombre, textViewPosicion, textViewVictorias, textViewDerrotas;
+    ImageView imageViewLogo, imageViewFavorite;
+    TextView textViewNombre;
 
-    public TabConferenceEast() {
+    public TabsTeamWest() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tab_conference_east, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewConferenceEast);
+        View view = inflater.inflate(R.layout.fragment_tabs_team_west, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerViewTeamWest);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-        textViewPosicion = view.findViewById(R.id.numeroPosicion);
+        textViewNombre = view.findViewById(R.id.nombreEquipo);
 
-        textViewNombre = view.findViewById(R.id.nombreEquipoResultados);
+        imageViewLogo = view.findViewById(R.id.imageViewLogoEquipo);
 
-        textViewVictorias = view.findViewById(R.id.numeroVictorias);
+        imageViewFavorite = view.findViewById(R.id.favoritoVacio);
 
-        textViewDerrotas = view.findViewById(R.id.numeroDerrotas);
+        /*imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        listaConference = new ArrayList<>();
+                if(imageViewFavorite.set)
 
-        conferenceAdapterEast = new ConferenceAdapterEast(listaConference, getActivity());
+                imageViewFavorite.setImageResource(R.drawable.icono_favorito_relleno);
+            }
+        });*/
 
-        recyclerView.setAdapter(conferenceAdapterEast);
+        listaEquipos = new ArrayList<Team>();
+
+        teamAdapter = new TeamAdapter(listaEquipos, getActivity());
+
+        recyclerView.setAdapter(teamAdapter);
 
         return view;
     }
@@ -78,14 +89,14 @@ public class TabConferenceEast extends Fragment {
         boolean isConnected = info != null && info.isConnected();
 
         if(isConnected){
-            ConferenceViewModel model = ViewModelProviders.of(this).get(ConferenceViewModel.class);
-            model.getConference("East").observe(this, new Observer<List<Conference>>() {
+            AppViewModel model = ViewModelProviders.of(this).get(AppViewModel.class);
+            model.getEquipos("West").observe(this, new Observer<List<Team>>() {
                 @Override
-                public void onChanged(@Nullable List<Conference> teams) {
-                    conferenceAdapterEast.notifyDataSetChanged();
-                    listaConference.clear();
-                    if(conferenceAdapterEast != null){
-                        listaConference.addAll(teams);
+                public void onChanged(@Nullable List<Team> teams) {
+                    teamAdapter.notifyDataSetChanged();
+                    listaEquipos.clear();
+                    if(teamAdapter != null){
+                        listaEquipos.addAll(teams);
                     }else{
                         Log.d("Hola", "error on changed de tab west");
                     }
@@ -95,4 +106,5 @@ public class TabConferenceEast extends Fragment {
             Log.d("Hola", "error on resume de tab west");
         }
     }
+
 }

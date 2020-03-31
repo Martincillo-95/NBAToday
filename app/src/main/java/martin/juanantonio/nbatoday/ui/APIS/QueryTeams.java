@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.teams;
+package martin.juanantonio.nbatoday.ui.APIS;
 
 import android.text.TextUtils;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Model.Team;
 
 public final class QueryTeams {
 

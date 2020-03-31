@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Model.Conference;
 
-public class ConferenceAdapterWest extends RecyclerView.Adapter<ConferenceAdapterWest.ViewHolder> {
+public class ConferenceAdapter extends RecyclerView.Adapter<ConferenceAdapter.ViewHolder> {
 
     private List<Conference> conferenceList;
     private Context context;
 
-    public ConferenceAdapterWest(List<Conference> conferenceList, Context context){
+    public ConferenceAdapter(List<Conference> conferenceList, Context context){
         this.conferenceList = conferenceList;
         this.context = context;
     }

@@ -1,10 +1,9 @@
-package martin.juanantonio.nbatoday.ui.teams;
+package martin.juanantonio.nbatoday.ui.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,17 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Model.Team;
 
-public class TeamAdapterEast extends RecyclerView.Adapter<TeamAdapterEast.ViewHolder> {
+public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     private List<Team> teamList;
     private Context context;
-    //private OnItemClickListener listener;
 
-    public TeamAdapterEast(List<Team> teamList, Context context /*,OnItemClickListener listener*/) {
+    public TeamAdapter(List<Team> teamList, Context context) {
         this.teamList = teamList;
         this.context = context;
-        //this.listener = listener;
     }
 
     @NonNull
@@ -44,22 +42,12 @@ public class TeamAdapterEast extends RecyclerView.Adapter<TeamAdapterEast.ViewHo
 
         holder.logoEquipo.setImageResource(team.getLogoEquipo());
         holder.nombreEquipo.setText(team.getNombreEquipo());
-        /*holder.logoFavorito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(team, position);
-            }
-        });*/
     }
 
     @Override
     public int getItemCount() {
         return teamList.size();
     }
-
-    /*public interface OnItemClickListener {
-        void onItemClick(Team team, int position);
-    }*/
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

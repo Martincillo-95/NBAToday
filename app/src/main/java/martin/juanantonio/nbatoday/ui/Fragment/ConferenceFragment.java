@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.conferences;
+package martin.juanantonio.nbatoday.ui.Fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +19,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Locale;
 
 import martin.juanantonio.nbatoday.R;
+import martin.juanantonio.nbatoday.ui.Tabs.TabConferenceEast;
+import martin.juanantonio.nbatoday.ui.Tabs.TabConferenceWest;
 
 public class ConferenceFragment extends Fragment {
 

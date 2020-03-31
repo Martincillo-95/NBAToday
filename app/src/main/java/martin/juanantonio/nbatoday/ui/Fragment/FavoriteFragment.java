@@ -1,4 +1,4 @@
-package martin.juanantonio.nbatoday.ui.favorite;
+package martin.juanantonio.nbatoday.ui.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
