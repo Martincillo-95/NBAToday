@@ -5,6 +5,7 @@ public class Player {
     private String idJugador;
     private String idEquipo;
     private String nombreJugador;
+    private String apellidoJugador;
     private String posicionJugador;
     private String estaturaJugador;
 
@@ -12,10 +13,11 @@ public class Player {
 
     }
 
-    public Player(String idJugador, String idEquipo, String nombreJugador, String posicionJugador, String estaturaJugador) {
+    public Player(String idJugador, String idEquipo, String nombreJugador, String apellidoJugador, String posicionJugador, String estaturaJugador) {
         this.idJugador = idJugador;
         this.idEquipo = idEquipo;
         this.nombreJugador = nombreJugador;
+        this.apellidoJugador = apellidoJugador;
         this.posicionJugador = posicionJugador;
         this.estaturaJugador = estaturaJugador;
     }
@@ -58,5 +60,13 @@ public class Player {
 
     public void setEstaturaJugador(String estaturaJugador) {
         this.estaturaJugador = estaturaJugador;
+    }
+
+    public String getApellidoJugador() {
+        return apellidoJugador;
+    }
+
+    public void setApellidoJugador(String apellidoJugador) {
+        this.apellidoJugador = apellidoJugador;
     }
 }

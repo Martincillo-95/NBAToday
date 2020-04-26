@@ -39,7 +39,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Player player = playerList.get(position);
 
-        holder.nombreJugador.setText(player.getNombreJugador());
+        holder.nombreJugador.setText(player.getNombreJugador() + player.getApellidoJugador());
         holder.posicionJugador.setText(player.getPosicionJugador());
         holder.estaturaJugador.setText(player.getEstaturaJugador());
     }
@@ -61,6 +61,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
             nombreJugador = itemView.findViewById(R.id.nombreJugador);
             posicionJugador = itemView.findViewById(R.id.posicionJugador);
             estaturaJugador = itemView.findViewById(R.id.estaturaJugador);
+
         }
     }
 }
