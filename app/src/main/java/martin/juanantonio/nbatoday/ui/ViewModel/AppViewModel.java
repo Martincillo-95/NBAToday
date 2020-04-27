@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.List;
 
+import martin.juanantonio.nbatoday.ui.APIS.QueryPlayer;
 import martin.juanantonio.nbatoday.ui.Model.Conference;
 import martin.juanantonio.nbatoday.ui.APIS.QueryConference;
 import martin.juanantonio.nbatoday.ui.APIS.QueryTeams;
@@ -132,6 +133,11 @@ public class AppViewModel extends AndroidViewModel {
             @Override
             public void onResponse(String response) {
 
+                List<Player> listaPlayer = QueryPlayer.extractFeatureFromJSON(response);
+                playerList.setValue(listaPlayer);
+
+                Log.d("onReponse", response);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -139,5 +145,7 @@ public class AppViewModel extends AndroidViewModel {
                 Log.d("onErrorReponse Players", error.getMessage());
             }
         });
+
+        requestQueue.add(stringRequest);
     }
 }

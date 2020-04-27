@@ -18,12 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import martin.juanantonio.nbatoday.R;
 import martin.juanantonio.nbatoday.ui.Adapter.TeamAdapter;
+import martin.juanantonio.nbatoday.ui.Listener.OnAdapterListener;
 import martin.juanantonio.nbatoday.ui.Model.Team;
 import martin.juanantonio.nbatoday.ui.ViewModel.AppViewModel;
 import static android.content.Context.CONNECTIVITY_SERVICE;
@@ -74,6 +76,13 @@ public class TabsTeamWest extends Fragment {
         listaEquipos = new ArrayList<Team>();
 
         teamAdapter = new TeamAdapter(listaEquipos, getActivity());
+
+        teamAdapter.setOnAdapterListener(new OnAdapterListener() {
+            @Override
+            public void onTeamNameClicked(int position, String teamName) {
+                Toast.makeText(getActivity(), "Posicion: "+position+"\n"+"Nombre equipo: "+teamName, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         recyclerView.setAdapter(teamAdapter);
 
